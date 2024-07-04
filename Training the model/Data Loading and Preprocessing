@@ -1,0 +1,43 @@
+import os
+import pandas as pd
+import numpy as np
+import cv2
+import tensorflow as tf
+from sklearn.model_selection import train_test_split
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.utils import to_categorical
+
+# Load data
+data_dir = "C:\Users\abhia\Downloads\npz.txt"
+labels_file = os.path.join(data_dir, 'labels.csv')
+
+df = pd.read_csv(labels_file)
+image_paths = df['image_path'].values
+steering_angles = df['steering_angle'].values
+
+# Preprocessing function
+def preprocess_image(image_path):
+    image = cv2.imread(image_path)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    image = cv2.resize(image, (200, 66))  # Resize to match input shape of NVIDIA model
+    image = image / 255.0  # Normalize
+    return image
+
+# Load and preprocess images
+images = np.array([preprocess_image(os.path.join(data_dir, img_path)) for img_path in image_paths])
+steering_angles = np.array(steering_angles)
+
+# Train-test split
+X_train, X_val, y_train, y_val = train_test_split(images, steering_angles, test_size=0.2, random_state=42)
+
+# Data augmentation
+datagen = ImageDataGenerator(
+    rotation_range=10,
+    width_shift_range=0.1,
+    height_shift_range=0.1,
+    zoom_range=0.1,
+    horizontal_flip=True
+)
+
+# Fit generator to training data
+datagen.fit(X_train)
