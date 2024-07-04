@@ -1,0 +1,17 @@
+import matplotlib.pyplot as plt
+
+# Evaluate the model
+val_loss = model.evaluate(X_val, y_val)
+print(f'Validation Loss: {val_loss}')
+
+# Plot training history
+plt.plot(history.history['loss'], label='Train Loss')
+plt.plot(history.history['val_loss'], label='Validation Loss')
+plt.xlabel('Epoch')
+plt.ylabel('Mean Squared Error')
+plt.legend()
+plt.show()
+
+# Save the model
+model.save('self_driving_model.h5')
+
