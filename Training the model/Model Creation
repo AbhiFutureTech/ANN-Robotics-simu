@@ -1,0 +1,22 @@
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
+
+def create_model():
+    model = Sequential([
+        Conv2D(24, (5, 5), strides=(2, 2), activation='relu', input_shape=(66, 200, 3)),
+        Conv2D(36, (5, 5), strides=(2, 2), activation='relu'),
+        Conv2D(48, (5, 5), strides=(2, 2), activation='relu'),
+        Conv2D(64, (3, 3), activation='relu'),
+        Conv2D(64, (3, 3), activation='relu'),
+        Flatten(),
+        Dense(100, activation='relu'),
+        Dropout(0.5),
+        Dense(50, activation='relu'),
+        Dense(10, activation='relu'),
+        Dense(1)  # Regression output for steering angle
+    ])
+    model.compile(optimizer='adam', loss='mse')
+    return model
+
+model = create_model()
+model.summary()
