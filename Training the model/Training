@@ -1,0 +1,11 @@
+# Training the model
+batch_size = 32
+epochs = 10
+
+history = model.fit(
+    datagen.flow(X_train, y_train, batch_size=batch_size),
+    validation_data=(X_val, y_val),
+    steps_per_epoch=len(X_train) // batch_size,
+    epochs=epochs,
+    validation_steps=len(X_val) // batch_size
+)
