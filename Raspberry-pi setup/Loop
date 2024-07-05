@@ -1,0 +1,30 @@
+def main():
+    camera = PiCamera()
+    camera.resolution = (640, 480)
+    camera.framerate = 32
+    raw_capture = PiRGBArray(camera, size=(640, 480))
+
+    for frame in camera.capture_continuous(raw_capture, format="bgr", use_video_port=True):
+        image = frame.array
+
+        # Preprocess the image
+        preprocessed_image = preprocess_image(image)
+
+        # Predict the steering angle
+        steering_angle = model.predict(preprocessed_image)[0]
+
+        # Convert steering angle to motor speed
+        left_speed = 0.5 + steering_angle
+        right_speed = 0.5 - steering_angle
+
+        # Set motor speed
+        set_motor_speed(left_speed, right_speed)
+
+        # Clear the stream for the next frame
+        raw_capture.truncate(0)
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        GPIO.cleanup()
