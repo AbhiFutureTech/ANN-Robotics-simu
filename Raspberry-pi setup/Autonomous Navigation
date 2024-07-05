@@ -1,0 +1,15 @@
+import cv2
+import numpy as np
+import tensorflow as tf
+from picamera.array import PiRGBArray
+from picamera import PiCamera
+
+# Load the pre-trained model
+model = tf.keras.models.load_model('')
+
+# Preprocessing function
+def preprocess_image(image):
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    image = cv2.resize(image, (200, 66))
+    image = image / 255.0
+    return np.expand_dims(image, axis=0)
