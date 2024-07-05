@@ -1,9 +1,5 @@
 # Neural-Network-Based-Autonomous-Navigation-for-Self-Driving-Robots
 
-## Python + Tensorflow + OpenCV
-
-## Overview
-
 1.The Robot uses neural network to learn and predict decisions just like a human brain.
 2.The model is built using Neural Network and it's trained by feeding in labelled images of tracks.
 3.After the model is trained it will be capable of making its own decisions. The prediction will be made on the laptop due to larger memory and flexibility. Raspberry pi will be used to stream the video to laptop 
@@ -14,7 +10,7 @@
   its decisions.It will try to maintain its path along the track and prevent from collision
 
 
-A) Hardware Design
+## A) Hardware Design
 
 The Hardware components used for this project are as follows:
 
@@ -50,7 +46,7 @@ pip install -r requirements.txt
 
 Ensure you have the necessary hardware and software configurations as detailed in the documentation.
 
-B) Software Design
+## B) Software Design
 
 1.Python(2.7)
 2.TensorFlow
