@@ -1,0 +1,31 @@
+import RPi.GPIO as GPIO
+
+# Motor control pins
+motor_left_forward = 17
+motor_left_backward = 18
+motor_right_forward = 22
+motor_right_backward = 23
+
+# Setup GPIO
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(motor_left_forward, GPIO.OUT)
+GPIO.setup(motor_left_backward, GPIO.OUT)
+GPIO.setup(motor_right_forward, GPIO.OUT)
+GPIO.setup(motor_right_backward, GPIO.OUT)
+
+def set_motor_speed(left_speed, right_speed):
+    if left_speed > 0:
+        GPIO.output(motor_left_forward, GPIO.HIGH)
+        GPIO.output(motor_left_backward, GPIO.LOW)
+    else:
+        GPIO.output(motor_left_forward, GPIO.LOW)
+        GPIO.output(motor_left_backward, GPIO.HIGH)
+
+    if right_speed > 0:
+        GPIO.output(motor_right_forward, GPIO.HIGH)
+        GPIO.output(motor_right_backward, GPIO.LOW)
+    else:
+        GPIO.output(motor_right_forward, GPIO.LOW)
+        GPIO.output(motor_right_backward, GPIO.HIGH)
+
+    # Set PWM for speed control if needed
