@@ -1,13 +1,18 @@
 # Neural-Network-Based-Autonomous-Navigation-for-Self-Driving-Robots
 
 1.The Robot uses neural network to learn and predict decisions just like a human brain.
+
 2.The model is built using Neural Network and it's trained by feeding in labelled images of tracks.
-3.After the model is trained it will be capable of making its own decisions. The prediction will be made on the laptop due to larger memory and flexibility. Raspberry pi will be used to stream the video to laptop 
-  using Pi-camera.
+
+3.After the model is trained it will be capable of making its own decisions. The prediction will be made on the laptop due to larger memory and flexibility. Raspberry pi will be used to stream the video to 
+  laptop using Pi-camera.
+
 4.First we will train the model using the dataset that contains the labelled images of the track.
+
 5.Raspberry Pi will stream the live feed to the laptop and the predictions will be sent back to the raspberry pi.
-6.The raspberry pi is connected to motor driver which will control the wheels of the bot. Ultrasonic sensor makes sure that the robot does not collide with obstacles. Once trained it can run autonomously and make 
-  its decisions.It will try to maintain its path along the track and prevent from collision
+
+6.The raspberry pi is connected to motor driver which will control the wheels of the bot. Ultrasonic sensor makes sure that the robot does not collide with obstacles. Once trained it can run autonomously and 
+  make its decisions.It will try to maintain its path along the track and prevent from collision
 
 
 ## A) Hardware Design
