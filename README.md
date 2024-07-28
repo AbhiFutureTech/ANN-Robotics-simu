@@ -1,4 +1,4 @@
-# Neural-Network-Based-Autonomous-Navigation-for-Self-Driving-Robots
+# Neural Network Based Autonomous Navigation for Self Driving Robots
 
 1.The Robot uses neural network to learn and predict decisions just like a human brain.
 
